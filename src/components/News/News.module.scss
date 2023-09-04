@@ -1,0 +1,89 @@
+.news {
+  padding-block: 40px;
+}
+
+.cardWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.newsBlog {
+  padding: 33px 235px 67px 32px;
+  max-width: 570px;
+  border-radius: 16px;
+  background-image: url("../../../public/img/news-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.newsBlogSpan {
+  margin-bottom: 13px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #565C66;
+}
+
+.newsBlogName {
+  min-width: 303px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px; /* 125% */
+  color: #2D3440;
+}
+
+.newsSubscription {
+  padding: 6px;
+  max-width: 570px;
+  border-radius: 16px;
+  background-image: url("../../../public/img/subs-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.newsSubscriptionInner {
+  padding: 26px;
+  border-radius: 16px;
+  background-color: #FFFFFF;
+}
+
+.newsSubscriptionDescr {
+  margin-bottom: 44px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #565C66;
+}
+
+.newsSubscriptionForm {
+  display: flex;
+  gap: 14px;
+}
+
+.newsSubscriptionFormInput {
+  padding-top: 14px;
+  padding-left: 16px;
+  padding-bottom: 14px;
+  width: 332px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color:  #1a1a1a;
+
+  border-radius: 4px;
+  border: 1px solid var(--basic-neutral, #B9B9B9);
+  background: var(--basic-white, #FFF);
+}
+
+.newsSubscriptionFormButton {
+  Button {
+    color: #FFFFFF;
+    border: 4px solid rgba(255, 255, 255, 0.57);
+    background: var(--special-extra-bright, #FF2F64);
+    box-shadow: 0px 4px 12px 0px rgba(45, 52, 64, 0.10);
+  }
+}

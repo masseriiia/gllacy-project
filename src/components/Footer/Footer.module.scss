@@ -1,0 +1,41 @@
+.footer {
+  padding-block: 48px ;
+}
+
+.footerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footerSocials {
+  display: flex;
+  gap: 16px;
+}
+
+.footerDescr {
+  max-width: 356px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 21px;
+  row-gap: 8px;
+}
+
+.footerDescrlink {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  color: #2D3440;
+
+  &:hover {
+    font-weight: 700;
+    transition: 0.5s;
+  }
+}
+
+.footerInfo {}
+
+.footerInfoImg {
+  margin-bottom: 8px;
+}

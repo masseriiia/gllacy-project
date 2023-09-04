@@ -1,0 +1,113 @@
+.hero {
+  padding-top: 21px;
+  padding-bottom: 26px;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  gap: 45px;
+}
+
+.heroDescr {
+  max-width: 470px;
+}
+
+.heroTitle {
+  margin-bottom: 24px;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 46px;
+  color: #2D3440;
+}
+
+.heroText {
+  margin-bottom: 48px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #2D3440;
+}
+
+.heroSlider {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.iceCreamOne {
+  position: relative;
+}
+
+.heroCream {
+  display: flex;
+  align-items: center;
+  max-width: 327.154px;
+  max-height: 312px;
+  border-radius: 50%;
+  background: #FFCBD8;
+}
+
+.heroArrowLeft {
+  position: absolute;
+  top: 50%;
+  left: -20px;
+  transform: translateY(-50%);
+}
+
+.heroArrowRight {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+}
+
+.iceCreamTwo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: #FFCBD8;
+  border-radius: 50%;
+}
+
+.iceCreamThree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background-color: #FFCBD8;
+  border-radius: 50%;
+}
+
+.heroWrapperBottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.points {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.point {
+  display: flex;
+  width: 12px;
+  height: 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #FCFCFC;
+}
+
+.socials {
+  display: flex;
+  gap: 16px;
+}

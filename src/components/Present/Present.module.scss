@@ -1,0 +1,61 @@
+.present {
+  padding-block: 40px;
+}
+
+.presentTitle {
+  margin-bottom: 55px;
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 46px;
+  text-align: center;
+  color: #2D3440;
+}
+
+.presentItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.presentCard {
+  display: flex;
+  min-width: 570px;
+  min-height: 268px;
+
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background:  #F79;
+}
+
+.presentCardItem {
+  max-width: 351px;
+  padding: 36px 20px 36px 36px;
+}
+
+.presentCardItemTitle {
+  margin-bottom: 28px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  color: #2D3440;
+}
+
+.presentCardItemDescr {
+  margin-bottom: 28px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+  color:  #2D3440;
+}
+
+.presentCardImg {
+  display: flex;
+  max-width: 219px;
+  max-height: 268px;
+  align-items: flex-end;
+}

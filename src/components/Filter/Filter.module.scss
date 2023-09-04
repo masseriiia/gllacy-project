@@ -1,0 +1,47 @@
+.filter {
+  padding-block: 40px;
+}
+
+.filterForm {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 24px;
+  color: #2D3440;
+}
+
+.filterFormLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterFormItem {
+  max-width: 823px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 9px 24px;
+  align-items: center;
+  gap: 16px;
+  align-self: center;
+  border-radius: 18px;
+  background: rgba(252, 252, 252, 0.30);
+}
+
+.filterFormElement {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterFormButton {
+  max-width: 185px;
+  max-height: 36px;
+  display: flex;
+  padding: 8px 32px;
+
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid #FCFCFC;
+  background: rgba(252, 252, 252, 0.30);
+}

@@ -1,0 +1,57 @@
+.header {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.headerWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.headerItems {
+  display: flex;
+  gap: 6px;
+}
+
+.headerItem {
+  display: flex;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #2D3440;
+
+  a {
+    color: #2D3440;
+  }
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+
+}
+
+.headerNumber a {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  color: #2D3440;
+}
+
+
+

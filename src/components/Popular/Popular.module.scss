@@ -1,0 +1,71 @@
+.popular {
+  padding-block: 40px;
+}
+
+.popularTitle {
+  margin-bottom: 107px;
+}
+
+.popularItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.popularItem {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 28px;
+  max-width: 270px;
+  min-height: 281px;
+  border-radius: 8px;
+  background: #FCFCFC;
+}
+
+.popularItemImg {
+  display: block;
+  img {
+    margin-bottom: -20px;
+    transform: translate(0px, -40px);
+  }
+
+}
+
+.popularItemTitle {
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: center;
+  color:  #2D3440;
+}
+
+.popularItemDescr {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color:  #565C66;
+}
+
+.popularItemInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popularItemPrice {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  color: #2D3440;
+}
+
+.popularItemBuy {
+  padding: 8px 11px;
+  border-radius: 26px;
+  background: #FF2F64;
+}
