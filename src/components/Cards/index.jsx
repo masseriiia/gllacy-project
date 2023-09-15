@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import cart from '../../../public/img/svg/cart-2.svg'
-import Style from './Card.module.scss'
+import Style from './Cards.module.scss'
 
-const CardItem = ({img, name, descr, price}) => {
+const CardsItem = ({img, name, descr, price}) => {
 
     return (
         <div className={Style.cardItem}>
@@ -19,7 +19,7 @@ const CardItem = ({img, name, descr, price}) => {
                 <div className={Style.cardItemPrice}>
                     {price} ₽/кг
                 </div>
-                <button className={Style.cardItemBuy}>
+                <button onClick={} className={Style.cardItemBuy}>
                     <img src={cart} alt=""/>
                 </button>
             </div>
@@ -27,4 +27,4 @@ const CardItem = ({img, name, descr, price}) => {
     );
 };
 
-export default CardItem;
+export default CardsItem;
