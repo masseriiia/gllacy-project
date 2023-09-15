@@ -5,6 +5,7 @@
 .cardWrapper {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   row-gap: 90px;
   column-gap: 30px;
 }

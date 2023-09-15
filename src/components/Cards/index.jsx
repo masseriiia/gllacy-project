@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import cart from '../../../public/img/svg/cart-2.svg'
-import Style from './Card.module.scss'
+import Style from './Cards.module.scss'
 
-const CardItem = ({img, name, descr, price}) => {
+const Index = ({img, name, descr, price}) => {
 
     return (
         <div className={Style.cardItem}>
@@ -27,4 +27,4 @@ const CardItem = ({img, name, descr, price}) => {
     );
 };
 
-export default CardItem;
+export default Index;

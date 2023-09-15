@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from "../components/Header/Header.jsx";
+
 import Hero from "../components/Hero/Hero.jsx";
 import Present from "../components/Present/Present.jsx";
 import Popular from "../components/Popular/Popular.jsx";
@@ -12,7 +12,6 @@ import Footer from "../components/Footer/Footer.jsx";
 const Home = () => {
     return (
         <>
-         <Header/>
          <Hero/>
          <Present/>
          <Popular/>
