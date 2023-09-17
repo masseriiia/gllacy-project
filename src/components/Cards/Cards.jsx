@@ -1,11 +1,11 @@
 import React from 'react';
 import Style from './Cards.module.scss'
 import Index from "./index.jsx";
-import { СartContext } from "../../pages/Catalog.jsx";
+import { AppContext } from "../../App.jsx";
 
 
 const Cards = () => {
-    const {items, setItems} = React.useContext(СartContext)
+    const {items, setItems, onAddToCart} = React.useContext(AppContext)
 
     return (
         <section className={Style.card}>
@@ -16,6 +16,7 @@ const Cards = () => {
                             <Index
                                 key={cart.id}
                                 {...cart}
+                                onAddToCart={onAddToCart}
                             />
                         )
                     }

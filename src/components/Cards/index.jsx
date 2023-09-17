@@ -2,7 +2,7 @@ import React from 'react';
 import cart from '../../../public/img/svg/cart-2.svg'
 import Style from './Cards.module.scss'
 
-const Index = ({img, name, descr, price}) => {
+const Index = ({id, img, name, descr, price, onAddToCart}) => {
 
     return (
         <div className={Style.cardItem}>
@@ -19,7 +19,7 @@ const Index = ({img, name, descr, price}) => {
                 <div className={Style.cardItemPrice}>
                     {price} ₽/кг
                 </div>
-                <button className={Style.cardItemBuy}>
+                <button onClick={() => onAddToCart(id)} className={Style.cardItemBuy}>
                     <img src={cart} alt=""/>
                 </button>
             </div>
