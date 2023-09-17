@@ -5,16 +5,24 @@ import cross from '../../../public/img/svg/cross.svg'
 import Cart from "../Cart/Cart.jsx";
 import {AppContext} from "../../App.jsx";
 
+
+
+
 const Drawer = ({cartActive, setCartActive}) => {
-    const {items, cartCatalog} = React.useContext(AppContext)
+    const {items, cartCatalog, onRemoveToCart} = React.useContext(AppContext)
+
+
 
     return (
         <Cart active={cartActive} setActive={setCartActive}>
             <div className={Style.cart}>
-                <h1 className={Style.cartTitle}>Корзина</h1>
+                <h1 className={Style.cartTitle}>
+                    {Object.values(cartCatalog.itemsCard).length ? "Корзина" :
+                        "Ваша корзина пока пуста"
+                    }
+                </h1>
                 {
-                    Object.keys(cartCatalog)
-                        .map(id => items.filter(item => item.id === id)[0])
+                    Object.values(cartCatalog.itemsCard)
                         .map(cart => (
                             <div className={Style.cartItems}>
                                 <div className={Style.cartItem}>
@@ -26,26 +34,30 @@ const Drawer = ({cartActive, setCartActive}) => {
                                             {cart.name}
                                         </div>
                                         <div className={Style.cartItemInfo}>
-                                            1 кг х 310 ₽
+                                            {cart.amount} кг х {cart.price} ₽
                                         </div>
                                     </div>
                                     <div className={Style.cartItemPrice}>
-                                        {cart.price}
+                                        {cart.amount * cart.price} ₽
                                     </div>
-                                    <button>
+                                    <button onClick={() => onRemoveToCart(cart.id)}>
                                         <img src={cross} alt=""/>
                                     </button>
                                 </div>
                             </div>
                         ))
                 }
-                <div className={Style.cartItemElement}>
-                    <button className={Style.cartItemElementButton}>Оформить заказ</button>
-                    <div className={Style.cartItemElementTotal}>Итого:</div>
-                </div>
+                {
+                    !!Object.values(cartCatalog.itemsCard).length &&
+                    <div className={Style.cartItemElement}>
+                        <button className={Style.cartItemElementButton}>Оформить заказ</button>
+                        <div className={Style.cartItemElementTotal}>Итого: {cartCatalog.amountPrice} ₽</div>
+                    </div>
+                }
             </div>
         </Cart>
     );
 };
 
 export default Drawer;
+

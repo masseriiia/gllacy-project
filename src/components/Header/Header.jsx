@@ -7,9 +7,22 @@ import cart from '../../../public/img/svg/cart.svg'
 import Style from './Header.module.scss'
 import Button from "../../common/Buttons/IconButton/IconButton.jsx";
 import Drawer from "../Drawer/Drawer.jsx";
+import {AppContext} from "../../App.jsx";
+
+const num_word = (value, words) => {
+    value = Math.abs(value) % 100;
+    var num = value % 10;
+    if(value > 10 && value < 20) return words[2];
+    if(num > 1 && num < 5) return words[1];
+    if(num == 1) return words[0];
+    return words[2];
+}
 
 const Header = () => {
     const [cartActive, setCartActive] = useState(false)
+    const { cartCatalog } = React.useContext(AppContext)
+
+    const amountItem = Object.values(cartCatalog.itemsCard).length
 
     return (
         <header className={Style.header}>
@@ -44,10 +57,11 @@ const Header = () => {
                         <div className="" onClick={() => setCartActive(!cartActive)}>
                             <Button className="headerCart" >
                                 <img src={cart} alt=""/>
-                                товар
+                                {
+                                    amountItem ? `${amountItem} ${num_word(amountItem, ['товар', 'товара', 'товаров'])}`  : "Корзина пуста"
+                                }
                             </Button>
                         </div>
-
                         <Drawer cartActive={cartActive} setCartActive={setCartActive}/>
                     </div>
                 </div>
