@@ -1,6 +1,5 @@
 import React from 'react';
 import Style from '../Cart/Cart.module.scss'
-import iceOne from '../../../public/img/iceCream/icecream-1.png'
 import cross from '../../../public/img/svg/cross.svg'
 import Cart from "../Cart/Cart.jsx";
 import {AppContext} from "../../App.jsx";
@@ -9,9 +8,7 @@ import {AppContext} from "../../App.jsx";
 
 
 const Drawer = ({cartActive, setCartActive}) => {
-    const {items, cartCatalog, onRemoveToCart} = React.useContext(AppContext)
-
-
+    const {cartCatalog, onRemoveToCart} = React.useContext(AppContext)
 
     return (
         <Cart active={cartActive} setActive={setCartActive}>
@@ -21,10 +18,10 @@ const Drawer = ({cartActive, setCartActive}) => {
                         "Ваша корзина пока пуста"
                     }
                 </h1>
-                {
-                    Object.values(cartCatalog.itemsCard)
-                        .map(cart => (
-                            <div className={Style.cartItems}>
+                <div className={Style.cartItems}>
+                    {
+                        Object.values(cartCatalog.itemsCard)
+                            .map(cart => (
                                 <div className={Style.cartItem}>
                                     <div className={Style.cartItemImg}>
                                         <img src={cart.img} alt=""/>
@@ -44,9 +41,11 @@ const Drawer = ({cartActive, setCartActive}) => {
                                         <img src={cross} alt=""/>
                                     </button>
                                 </div>
-                            </div>
-                        ))
-                }
+
+                            ))
+                    }
+                </div>
+
                 {
                     !!Object.values(cartCatalog.itemsCard).length &&
                     <div className={Style.cartItemElement}>
