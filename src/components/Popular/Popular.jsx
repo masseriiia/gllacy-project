@@ -5,7 +5,7 @@ import Title from "../../common/Title/Title.jsx";
 import {AppContext} from "../../App.jsx";
 
 const Popular = () => {
-    const {items} = React.useContext(AppContext)
+    const {items, onAddToCart} = React.useContext(AppContext)
 
     return (
         <section className={Style.popular}>
@@ -22,6 +22,7 @@ const Popular = () => {
                             <PopularItem
                                 key={popular.id}
                                 {...popular}
+                                onAddToCart={onAddToCart}
                             />
                         )
                     }

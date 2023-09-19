@@ -2,7 +2,7 @@ import React from 'react';
 import cart from '../../../public/img/svg/cart-2.svg'
 import Style from './Popular.module.scss'
 
-const PopularItem = ({img, name, descr, price}) => {
+const PopularItem = ({id, img, name, descr, price, onAddToCart}) => {
     return (
         <div className={Style.popularItem}>
             <div className={Style.popularItemImg}>
@@ -18,9 +18,9 @@ const PopularItem = ({img, name, descr, price}) => {
                 <p className={Style.popularItemPrice}>
                     {price} ₽/кг
                 </p>
-                <div className={Style.popularItemBuy}>
+                <button onClick={() => onAddToCart(id)} className={Style.popularItemBuy}>
                     <img src={cart} alt=""/>
-                </div>
+                </button>
             </div>
         </div>
     );
