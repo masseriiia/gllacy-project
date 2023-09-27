@@ -5,8 +5,6 @@ import Cart from "../Cart/Cart.jsx";
 import {AppContext} from "../../App.jsx";
 
 
-
-
 const Drawer = ({cartActive, setCartActive}) => {
     const {cartCatalog, onRemoveToCart} = React.useContext(AppContext)
 
