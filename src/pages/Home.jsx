@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Hero from "../components/Hero/Hero.jsx";
 import Present from "../components/Present/Present.jsx";
 import Popular from "../components/Popular/Popular.jsx";

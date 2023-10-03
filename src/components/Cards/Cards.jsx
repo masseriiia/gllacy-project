@@ -4,8 +4,9 @@ import Index from "./index.jsx";
 import { AppContext } from "../../App.jsx";
 
 
+
 const Cards = () => {
-    const {items, setItems, onAddToCart} = React.useContext(AppContext)
+    const {items, onAddToCart} = React.useContext(AppContext)
 
     return (
         <section className={Style.card}>
