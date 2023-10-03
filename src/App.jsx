@@ -5,7 +5,6 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import React from "react";
 import axios from "axios";
-import cart from "./components/Cart/Cart.jsx";
 
 export const AppContext = React.createContext('')
 
@@ -21,7 +20,7 @@ function App() {
     )
 
     React.useEffect(() => {
-        axios.get("https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items")
+        axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items`)
             .then(res => setItems(res.data))
     },[])
 
@@ -59,7 +58,7 @@ function App() {
   return (
       <BrowserRouter>
           <div className="App">
-              <AppContext.Provider value={{items, setItems, cartCatalog, onAddToCart, onRemoveToCart}}>
+              <AppContext.Provider value={{items, setItems, cartCatalog, onAddToCart, onRemoveToCart, }}>
                   <Header/>
                   <Routes>
                       <Route path="/" element={<Home/>}/>
