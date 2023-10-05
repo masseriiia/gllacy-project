@@ -45,3 +45,19 @@
   border: 2px solid #FCFCFC;
   background: rgba(252, 252, 252, 0.30);
 }
+
+.radioButton input[type="radio"] {
+  display: none;
+}
+
+.radioCustom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #2D3440;
+  border-radius: 50%;
+}
+

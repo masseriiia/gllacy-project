@@ -18,11 +18,12 @@ function App() {
             amountPrice: 0
         }
     )
+    const [fatsSort, setFatsSort] = React.useState(0)
 
     React.useEffect(() => {
-        axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items`)
+        axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items?fats=` + fatsSort)
             .then(res => setItems(res.data))
-    },[])
+    },[fatsSort])
 
     const onAddToCart = (id) => {
         console.log(id)
@@ -52,13 +53,25 @@ function App() {
         const itemPrice = cartCatalog.itemsCard[id].price * cartCatalog.itemsCard[id].amount
         delete items[id]
         setCartCatalog({itemsCard: items, amountPrice: cartCatalog.amountPrice - itemPrice})
-
     }
+
+    const handleChange = (value) => {
+        console.log(value)
+    }
+
+    const handleFatsSort = (value) => {
+        setFatsSort(value)
+        console.log(fatsSort)
+        if (items) {}
+    }
+
+
+
 
   return (
       <BrowserRouter>
           <div className="App">
-              <AppContext.Provider value={{items, setItems, cartCatalog, onAddToCart, onRemoveToCart, }}>
+              <AppContext.Provider value={{items, setItems, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort}}>
                   <Header/>
                   <Routes>
                       <Route path="/" element={<Home/>}/>

@@ -1,0 +1,22 @@
+.filterFormLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterRadioItem {
+  position: relative;
+  height: 30px;
+  min-width: 333px;
+  display: flex;
+  padding: 9px 24px;
+  align-items: center;
+  border-radius: 18px;
+  background: rgba(252, 252, 252, 0.30);
+}
+
+.filterRadioInput {
+  position: absolute;
+  width: 290px;
+
+}
