@@ -18,6 +18,14 @@ const Filter = () => {
             value: 'popular',
             title: 'по популярности'
         },
+        {
+            value: 'price',
+            title: 'сначала дешёвые'
+        },
+        {
+            value: '-price',
+            title: 'сначала дорогие'
+        },
     ]
 
     const fatsData = [
@@ -68,7 +76,7 @@ const Filter = () => {
             <div className="container">
                 <div className={Style.filterWrapper}>
                     <div className={Style.filterForm}>
-                        <Select title="Сортировка" options={optionsData} />
+                        <Select title="Сортировка" optionsData={optionsData}/>
                         <InputDoubleRange title="Цена" minValue={280} maxValue={360} stepValue={10} />
                         <label className={Style.filterFormLabel}> Жирность:
                             <div className={Style.filterFormItem}>

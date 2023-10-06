@@ -1,9 +1,9 @@
+import React from "react";
 import './App.css'
 import Home from "./pages/Home.jsx";
 import Catalog from "./pages/Catalog.jsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
-import React from "react";
 import axios from "axios";
 
 export const AppContext = React.createContext('')
@@ -19,11 +19,12 @@ function App() {
         }
     )
     const [fatsSort, setFatsSort] = React.useState(0)
+    const [sortType, setSortType] = React.useState({})
 
     React.useEffect(() => {
-        axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items?fats=` + fatsSort)
+        axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items?fats=${fatsSort}&sortBy=${sortType}`)
             .then(res => setItems(res.data))
-    },[fatsSort])
+    },[fatsSort, sortType])
 
     const onAddToCart = (id) => {
         console.log(id)
@@ -55,23 +56,30 @@ function App() {
         setCartCatalog({itemsCard: items, amountPrice: cartCatalog.amountPrice - itemPrice})
     }
 
+    const handleChangeType = (value) => {
+        let sortedItems = [...items]
+
+        if (value === 'price') {
+            sortedItems.sort((a, b) => a - b)
+        }
+        setSortType(sortedItems)
+    }
+
     const handleChange = (value) => {
         console.log(value)
     }
 
+
     const handleFatsSort = (value) => {
         setFatsSort(value)
         console.log(fatsSort)
-        if (items) {}
     }
-
-
 
 
   return (
       <BrowserRouter>
           <div className="App">
-              <AppContext.Provider value={{items, setItems, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort}}>
+              <AppContext.Provider value={{items, setItems, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort, handleChangeType}}>
                   <Header/>
                   <Routes>
                       <Route path="/" element={<Home/>}/>
