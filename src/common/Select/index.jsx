@@ -8,7 +8,7 @@ const Select = ({title, optionsData}) => {
     return (
         <label className={Style.filterFormLabel}>
             {title}:
-            <select className={Style.filterFormItem} onClick={() => handleChangeType} onChange={(event) => handleChange(event.target.value)}>
+            <select className={Style.filterFormItem} onChange={(event) => handleChangeType(event.target.value)}>
                 {
                     optionsData.map((item) => <option key={item.value} value={item.value}>{item.title}</option>)
                 }

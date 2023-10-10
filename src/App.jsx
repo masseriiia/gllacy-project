@@ -60,9 +60,8 @@ function App() {
         let sortedItems = [...items]
 
         if (value === 'price') {
-            sortedItems.sort((a, b) => a - b)
+            setSortType(sortedItems.sort((a, b) => a.price - b.price))
         }
-        setSortType(sortedItems)
     }
 
     const handleChange = (value) => {
