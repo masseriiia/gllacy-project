@@ -18,13 +18,14 @@ function App() {
             amountPrice: 0
         }
     )
-    const [fatsSort, setFatsSort] = React.useState(0)
-    const [sortType, setSortType] = React.useState({})
+    const [fatsSort, setFatsSort] = React.useState()
+    const [fillersSort, setFillersSort] = React.useState([])
+    const [sortType, setSortType] = React.useState([])
 
     React.useEffect(() => {
-        axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items?fats=${fatsSort}&sortBy=${sortType}`)
+        axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items`)
             .then(res => setItems(res.data))
-    },[fatsSort, sortType])
+    },[])
 
     const onAddToCart = (id) => {
         console.log(id)
@@ -57,28 +58,35 @@ function App() {
     }
 
     const handleChangeType = (value) => {
-        let sortedItems = [...items]
-
-        if (value === 'price') {
-            setSortType(sortedItems.sort((a, b) => a.price - b.price))
+        console.log(value)
+        if (!sortType.includes(value)) {
+            setSortType([...sortType, items.sort()])
         }
+        console.log(sortType)
     }
 
     const handleChange = (value) => {
         console.log(value)
     }
 
-
     const handleFatsSort = (value) => {
         setFatsSort(value)
         console.log(fatsSort)
     }
 
+    const handleFillersSort = (value) => {
+        if (!fillersSort.includes(value)) {
+            setFillersSort([...fillersSort, value])
+        } else {
+            fillersSort.splice( fillersSort.indexOf(value), 1)
+            setFillersSort([...fillersSort])
+        }
+    }
 
   return (
       <BrowserRouter>
           <div className="App">
-              <AppContext.Provider value={{items, setItems, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort, handleChangeType}}>
+              <AppContext.Provider value={{items, setItems, fatsSort, fillersSort, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort, handleFillersSort, handleChangeType}}>
                   <Header/>
                   <Routes>
                       <Route path="/" element={<Home/>}/>

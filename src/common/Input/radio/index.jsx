@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import Style from "../../../components/Filter/Filter.module.scss";
 import {AppContext} from "../../../App.jsx";
 
-const InputRadio = ({fats}) => {
-    const {items, onAddToCart, handleFatsSort} = React.useContext(AppContext)
+const InputRadio = ({title, value, onChange}) => {
     const [isActive, setIsActive] = useState(false)
 
     const handleClick = () => {
@@ -15,8 +14,8 @@ const InputRadio = ({fats}) => {
             <input
                 type="radio"
                 checked={isActive}
-                value={fats.value}
-                onChange={(event) => handleFatsSort(event.target.value)}
+                value={value}
+                onChange={(event) => onChange(event.target.value)}
             />
             <span
                 className={Style.radioCustom}
@@ -25,7 +24,7 @@ const InputRadio = ({fats}) => {
                     backgroundColor: isActive ? '#ffffff' : 'transparent',
                 }}
             ></span>
-            {fats.title}
+            {title}
         </label>
     );
 };

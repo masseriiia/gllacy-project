@@ -6,14 +6,27 @@ import { AppContext } from "../../App.jsx";
 
 
 const Cards = () => {
-    const {items, onAddToCart} = React.useContext(AppContext)
+    const {items, fatsSort, fillersSort, onAddToCart} = React.useContext(AppContext)
 
     return (
         <section className={Style.card}>
             <div className="container">
                 <div className={Style.cardWrapper}>
                     {
-                        items.map(cart =>
+                        items
+                            .reduce((acc, item) => {
+                                if (item.fats == fatsSort || fatsSort == undefined) {
+                                    acc.push(item)
+                                }
+                                return acc
+                            }, [])
+                            .reduce((acc, item) => {
+                                if (fillersSort.includes(item.fillers)|| !fillersSort.length) {
+                                    acc.push(item)
+                                }
+                                return acc
+                            }, [])
+                            .map(cart =>
                             <Index
                                 key={cart.id}
                                 {...cart}

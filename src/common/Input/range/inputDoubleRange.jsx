@@ -20,8 +20,9 @@ const InputDoubleRange = ({title, minValue, maxValue, stepValue}) => {
         <label className={Style.filterFormLabel} >
             {title}:
             <div className={Style.filterRadioItem}>
-                <input className={Style.filterRadioInput} type="range" min={minValue} max={maxValueState} step={stepValue} onChange={(event) => handleMinValue(event.target.value)}/>
-                <input className={Style.filterRadioInput} type="range" min={minValueState} max={maxValue} step={stepValue} onChange={(event) => handleMaxValue(event.target.value)}/>
+                <div className={Style.filterSliderTrack}></div>
+                <input type="range" min={minValue} max={maxValueState} step={stepValue} onChange={(event) => handleMinValue(event.target.value)}/>
+                <input type="range" min={minValueState} max={maxValue} step={stepValue} onChange={(event) => handleMaxValue(event.target.value)}/>
             </div>
         </label>
     );
