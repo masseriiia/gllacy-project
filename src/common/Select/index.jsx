@@ -9,7 +9,8 @@ const Select = ({title, optionsItems, onChange}) => {
             {title}:
             <select className={Style.filterFormItem} onChange={(event) => onChange(event.target.value)}>
                 {
-                    optionsItems.map((item) => <option key={item.value} value={item.value}>{item.title}</option>)
+                    optionsItems
+                        .map((item) => <option key={item.value} value={item.value}>{item.title}</option>)
                 }
             </select>
         </label>

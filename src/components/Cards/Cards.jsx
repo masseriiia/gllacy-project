@@ -6,7 +6,7 @@ import { AppContext } from "../../App.jsx";
 
 
 const Cards = () => {
-    const {items, fatsSort, fillersSort, onAddToCart} = React.useContext(AppContext)
+    const {items, fatsSort, sortType, fillersSort, onAddToCart} = React.useContext(AppContext)
 
     return (
         <section className={Style.card}>
@@ -26,6 +26,7 @@ const Cards = () => {
                                 }
                                 return acc
                             }, [])
+                            
                             .map(cart =>
                             <Index
                                 key={cart.id}

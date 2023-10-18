@@ -58,9 +58,21 @@ function App() {
     }
 
     const handleChangeType = (value) => {
+
         console.log(value)
-        if (!sortType.includes(value)) {
-            setSortType([...sortType, items.sort()])
+
+        switch (value) {
+            case 'price':
+                setSortType([...items].sort((a, b) => a.price - b.price))
+                break
+
+            case '-price':
+                setSortType([...items].sort((a, b) => b.price - a.price))
+                break
+
+            case 'popular':
+                setSortType([...items].sort((a, b) => b.rating - a.rating))
+                break
         }
         console.log(sortType)
     }
@@ -86,7 +98,7 @@ function App() {
   return (
       <BrowserRouter>
           <div className="App">
-              <AppContext.Provider value={{items, setItems, fatsSort, fillersSort, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort, handleFillersSort, handleChangeType}}>
+              <AppContext.Provider value={{items, setItems, fatsSort, sortType, fillersSort, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort, handleFillersSort, handleChangeType}}>
                   <Header/>
                   <Routes>
                       <Route path="/" element={<Home/>}/>
