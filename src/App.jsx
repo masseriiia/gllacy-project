@@ -1,10 +1,11 @@
+import React from "react";
 import './App.css'
 import Home from "./pages/Home.jsx";
 import Catalog from "./pages/Catalog.jsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
-import React from "react";
 import axios from "axios";
+import {optionsItems} from "./common/constants.js";
 
 export const AppContext = React.createContext('')
 
@@ -18,11 +19,16 @@ function App() {
             amountPrice: 0
         }
     )
+    const [fatsSort, setFatsSort] = React.useState()
+    const [fillersSort, setFillersSort] = React.useState([])
+    const [sortType, setSortType] = React.useState('')
+    const [filteredItems, setFilteredItems] = React.useState([])
 
     React.useEffect(() => {
         axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items`)
             .then(res => setItems(res.data))
     },[])
+
 
     const onAddToCart = (id) => {
         console.log(id)
@@ -52,13 +58,33 @@ function App() {
         const itemPrice = cartCatalog.itemsCard[id].price * cartCatalog.itemsCard[id].amount
         delete items[id]
         setCartCatalog({itemsCard: items, amountPrice: cartCatalog.amountPrice - itemPrice})
+    }
 
+    const handleChangeType = (value) => {
+        setSortType(value)
+    }
+
+    const handleChange = (value) => {
+        console.log(value)
+    }
+
+    const handleFatsSort = (value) => {
+        setFatsSort(value)
+    }
+
+    const handleFillersSort = (value) => {
+        if (!fillersSort.includes(value)) {
+            setFillersSort([...fillersSort, value])
+        } else {
+            fillersSort.splice( fillersSort.indexOf(value), 1)
+            setFillersSort([...fillersSort])
+        }
     }
 
   return (
       <BrowserRouter>
           <div className="App">
-              <AppContext.Provider value={{items, setItems, cartCatalog, onAddToCart, onRemoveToCart, }}>
+              <AppContext.Provider value={{items, setItems, fatsSort, sortType, fillersSort, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort, handleFillersSort, handleChangeType, filteredItems}}>
                   <Header/>
                   <Routes>
                       <Route path="/" element={<Home/>}/>

@@ -1,0 +1,17 @@
+.filterFormLabel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterFormItem {
+  max-width: 823px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 9px 24px;
+  align-items: center;
+  gap: 16px;
+  align-self: center;
+  border-radius: 18px;
+  background: rgba(252, 252, 252, 0.30);
+}

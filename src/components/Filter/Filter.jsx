@@ -1,74 +1,67 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Style from './Filter.module.scss'
 import RcSlider from "./RcSlider/RcSlider.jsx";
 import Button from "../../common/Buttons/Button/Button.jsx";
+import Select from "../../common/Select/index.jsx";
+import InputRadio from "../../common/Input/radio";
+import InputCheckbox from "../../common/Input/checkbox";
+import InputRange from "../../common/Input/range";
+import InputDoubleRange from "../../common/Input/range/inputDoubleRange.jsx";
+import {AppContext} from "../../App.jsx";
+import {optionsItems} from "../../common/constants.js";
 
 const Filter = () => {
+    const {items, handleFatsSort, handleFillersSort, setFilteredItems, handleChangeType} = React.useContext(AppContext)
+    const [minPrice, setMinPrice] = useState(280)
+    const [maxPrice, setMaxPrice] = useState(360)
+
     return (
         <section className={Style.filter}>
             <div className="container">
                 <div className={Style.filterWrapper}>
-                    <div className={Style.filterForm}>
-                        <label className={Style.filterFormLabel}>
-                            Сортировка:
-                            <select className={Style.filterFormItem}>
-                                <option value="">по названию</option>
-                                <option value="">по популярности</option>
-                            </select>
-                        </label>
-                        <label className={Style.filterFormLabel}>
-                            Цена:
-                            <div className={Style.filterFormItem}>
-                                <RcSlider/>
-                            </div>
-                        </label>
+                    <form className={Style.filterForm}>
+                        <Select title="Сортировка" optionsItems={optionsItems} onChange={handleChangeType}/>
+                        <InputDoubleRange
+                            title="Цена"
+                            minValue={minPrice}
+                            maxValue={maxPrice}
+                            onPriceChange={(min, max) => {
+                                setMinPrice(min)
+                                setMaxPrice(max)
+                            }}
+                            stepValue={10}
+                        />
                         <label className={Style.filterFormLabel}> Жирность:
                             <div className={Style.filterFormItem}>
-                                <label className={Style.filterFormElement}>
-                                    <input type="radio"/>
-                                    0%
-                                </label>
-                                <label className={Style.filterFormElement}>
-                                    <input type="radio"/>
-                                    до 10%
-                                </label>
-                                <label className={Style.filterFormElement}>
-                                    <input type="radio"/>
-                                    до 30%
-                                </label>
-                                <label className={Style.filterFormElement}>
-                                    <input type="radio"/>
-                                    до 30%
-                                </label>
+                                {
+                                    items
+                                        .reduce((acc, item) => {
+                                        if (!acc.includes(item.fats)) {
+                                            acc.push(item.fats)
+                                        } return acc
+                                    },[])
+                                        .sort()
+                                        .map((item) => (
+                                        <InputRadio title={item + '%'} value={item} onChange={handleFatsSort}/>
+                                    ))
+                                }
                             </div>
                         </label>
                         <label className={Style.filterFormLabel}> Наполнители:
                             <span className={Style.filterFormItem}>
-                                <label className={Style.filterFormElement}>
-                                    <input className={Style.filterFormInput} type="checkbox"/>
-                                    <span className={Style.filterCheckmark}></span>
-                                    шоколадные
-                                </label>
-                                <label className={Style.filterFormElement}>
-                                    <input className={Style.filterFormInput}  type="checkbox"/>
-                                    сахарные посыпки
-                                </label>
-                                <label className={Style.filterFormElement}>
-                                    <input className={Style.filterFormInput}  type="checkbox"/>
-                                    фрукты
-                                </label>
-                                <label className={Style.filterFormElement}>
-                                    <input className={Style.filterFormInput}  type="checkbox"/>
-                                    сиропы
-                                </label>
-                                <label className={Style.filterFormElement}>
-                                    <input className={Style.filterFormInput}  type="checkbox"/>
-                                    джемы
-                                </label>
+                                {
+                                    items.reduce((acc, item) => {
+                                        if (!acc.includes(item.fillers)) {
+                                            acc.push(item.fillers)
+                                        } return acc
+                                    },[]).map((item) => (
+                                        <InputCheckbox title={item} value={item} onChange={handleFillersSort}/>
+                                    ))
+                                }
                             </span>
                         </label>
                         <button className={Style.filterFormButton}>Применить</button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </section>
