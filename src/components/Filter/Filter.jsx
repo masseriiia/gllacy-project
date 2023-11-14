@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Style from './Filter.module.scss'
 import RcSlider from "./RcSlider/RcSlider.jsx";
 import Button from "../../common/Buttons/Button/Button.jsx";
@@ -11,7 +11,9 @@ import {AppContext} from "../../App.jsx";
 import {optionsItems} from "../../common/constants.js";
 
 const Filter = () => {
-    const {items, handleFatsSort, handleFillersSort, handleChangeType} = React.useContext(AppContext)
+    const {items, handleFatsSort, handleFillersSort, setFilteredItems, handleChangeType} = React.useContext(AppContext)
+    const [minPrice, setMinPrice] = useState(280)
+    const [maxPrice, setMaxPrice] = useState(360)
 
     return (
         <section className={Style.filter}>
@@ -19,7 +21,16 @@ const Filter = () => {
                 <div className={Style.filterWrapper}>
                     <form className={Style.filterForm}>
                         <Select title="Сортировка" optionsItems={optionsItems} onChange={handleChangeType}/>
-                        <InputDoubleRange title="Цена" minValue={280} maxValue={360} stepValue={10} />
+                        <InputDoubleRange
+                            title="Цена"
+                            minValue={minPrice}
+                            maxValue={maxPrice}
+                            onPriceChange={(min, max) => {
+                                setMinPrice(min)
+                                setMaxPrice(max)
+                            }}
+                            stepValue={10}
+                        />
                         <label className={Style.filterFormLabel}> Жирность:
                             <div className={Style.filterFormItem}>
                                 {

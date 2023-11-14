@@ -5,6 +5,42 @@
   gap: 8px;
 }
 
+.filterDescr {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+.filterValues {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 127, 155, 0.83);
+  width: 70%;
+  top: -50%;
+  position: relative;
+  margin: auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  color: #ffffff;
+
+  &:before{
+    content: "";
+    position: absolute;
+    height: 17px;
+    width: 0;
+    border-top: 15px solid rgba(255, 127, 155, 0.83);
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    margin: auto;
+    bottom: -14px;
+    left: 0;
+    right: 0;
+  }
+}
+
 .filterRadioItem {
   position: relative;
   height: 30px;

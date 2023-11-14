@@ -15,10 +15,6 @@ const Crumbs = () => {
                         </li>
                         <li className={Style.crumbsItem}>
                             Каталог
-                            <img src={chevronsRight} alt=""/>
-                        </li>
-                        <li className={Style.crumbsItem}>
-                            Сливочное мороженое
                         </li>
                     </ul>
                     <h2 className={Style.crumbsTitle}>

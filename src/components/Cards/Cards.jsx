@@ -2,25 +2,30 @@ import React from 'react';
 import Style from './Cards.module.scss'
 import Index from "./index.jsx";
 import { AppContext } from "../../App.jsx";
-import {optionsItems} from "../../common/constants.js";
-
+import { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
+import ReactPaginate from 'react-paginate';
+import Pagination from "../Pagination/index.jsx";
 
 
 const Cards = () => {
-    const {items, fatsSort, sortType, fillersSort, onAddToCart} = React.useContext(AppContext)
+    const {items, fatsSort, sortType, fillersSort, onAddToCart, cartCatalog, filteredItems  } = React.useContext(AppContext)
     console.log(sortType)
+
     return (
         <section className={Style.card}>
             <div className="container">
                 <div className={Style.cardWrapper}>
                     {
-                        items
+                        filteredItems
                             .sort((a, b) => {
                                 switch (sortType) {
-                                    case 'price':
+                                    case 'title':
+                                        return a.name.localeCompare(b.name)
+                                    case '-price':
                                         return a.price - b.price
 
-                                    case '-price':
+                                    case 'price':
                                         return b.price - a.price
 
                                     case 'popular':
@@ -51,6 +56,7 @@ const Cards = () => {
                         )
                     }
                 </div>
+                <Pagination/>
             </div>
         </section>
     );

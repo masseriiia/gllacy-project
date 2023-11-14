@@ -5,6 +5,7 @@ import Catalog from "./pages/Catalog.jsx";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import axios from "axios";
+import {optionsItems} from "./common/constants.js";
 
 export const AppContext = React.createContext('')
 
@@ -20,12 +21,14 @@ function App() {
     )
     const [fatsSort, setFatsSort] = React.useState()
     const [fillersSort, setFillersSort] = React.useState([])
-    const [sortType, setSortType] = React.useState([])
+    const [sortType, setSortType] = React.useState('')
+    const [filteredItems, setFilteredItems] = React.useState([])
 
     React.useEffect(() => {
         axios.get(`https://64d8ebd15f9bf5b879ceb2cd.mockapi.io/items`)
             .then(res => setItems(res.data))
     },[])
+
 
     const onAddToCart = (id) => {
         console.log(id)
@@ -58,23 +61,7 @@ function App() {
     }
 
     const handleChangeType = (value) => {
-
-        console.log(value)
-
-        switch (value) {
-            case 'price':
-                setSortType([...items].sort((a, b) => a.price - b.price))
-                break
-
-            case '-price':
-                setSortType([...items].sort((a, b) => b.price - a.price))
-                break
-
-            case 'popular':
-                setSortType([...items].sort((a, b) => b.rating - a.rating))
-                break
-        }
-        console.log(sortType)
+        setSortType(value)
     }
 
     const handleChange = (value) => {
@@ -83,7 +70,6 @@ function App() {
 
     const handleFatsSort = (value) => {
         setFatsSort(value)
-        console.log(fatsSort)
     }
 
     const handleFillersSort = (value) => {
@@ -98,7 +84,7 @@ function App() {
   return (
       <BrowserRouter>
           <div className="App">
-              <AppContext.Provider value={{items, setItems, fatsSort, sortType, fillersSort, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort, handleFillersSort, handleChangeType}}>
+              <AppContext.Provider value={{items, setItems, fatsSort, sortType, fillersSort, cartCatalog, onAddToCart, onRemoveToCart, handleChange, handleFatsSort, handleFillersSort, handleChangeType, filteredItems}}>
                   <Header/>
                   <Routes>
                       <Route path="/" element={<Home/>}/>
